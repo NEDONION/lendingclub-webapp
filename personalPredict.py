@@ -38,7 +38,6 @@ not_fully_paid: indicates whether the loan was not paid back in full (the borrow
 表示贷款是否未全额偿还（借款人违约或借款人被认为不太可能偿还）
 '''
 
-
 import pickle
 import streamlit as st
 from PIL import Image
@@ -110,7 +109,7 @@ def app():
     annual_income = st.number_input("What is your annual income (1$ ~)?", value=50, step=1, min_value=1)
     st.write('You selected:', annual_income)
     # 求自然底数
-    log_annual_income = round(math.log(annual_income), 5)
+    log_annual_inc = round(math.log(annual_income), 5)
     st.markdown(' --- ')
 
     # dti 债务收入比
@@ -158,7 +157,7 @@ def app():
             'purpose': purpose, 
             'int_rate': int_rate, 
             'installment': installment, 
-            'log_annual_income': log_annual_income, 
+            'log_annual_inc': log_annual_inc, 
             'dti': dti, 
             'fico': fico,
             'days_with_cr_line': days_with_cr_line, 
