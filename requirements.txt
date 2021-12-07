@@ -1,5 +1,5 @@
 # 这里装需要的包
-pandas
+pandas == 21.3.1
 pickle
 numpy
 math
