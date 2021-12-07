@@ -1,7 +1,5 @@
 # 这里装需要的包
-pandas==1.3.0
+pandas
 numpy
-math
-time
 sklearn
 joblib
