@@ -55,8 +55,7 @@ def app():
     def openModel():
         model  = pickle.load(open('model/lc.model', 'rb'))
         return model
-    model = openModel()
-    
+
     @st.cache(allow_output_mutation=True)
     def openPipeline():
         pipeline = pickle.load(open('model/feature.pipeline', 'rb'))
