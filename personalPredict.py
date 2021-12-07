@@ -38,7 +38,7 @@ not_fully_paid: indicates whether the loan was not paid back in full (the borrow
 表示贷款是否未全额偿还（借款人违约或借款人被认为不太可能偿还）
 '''
 
-import sklearn
+
 import pickle
 import streamlit as st
 from PIL import Image
