@@ -2,7 +2,7 @@
 import streamlit as st
 import personalPredict
 import homepage
-import uploadButton
+# import uploadButton
 import about
 from multiapp import MultiApp
 from PIL import Image

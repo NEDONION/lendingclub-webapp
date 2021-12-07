@@ -1,4 +1,4 @@
-# 这里装需要的包
+# 这里装需要的外部库，python源码库不需要
 pandas
 numpy
 sklearn
