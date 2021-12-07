@@ -67,8 +67,6 @@ def app():
     # header_pic = Image.open('header.jpg')
     # st.image(header_pic, use_column_width=True)
 
-
-
     def creditPolicy(credit_policy_choice):
         if credit_policy_choice == "You can meets the credit underwriting criteria":
             return 1
