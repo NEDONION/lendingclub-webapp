@@ -1,6 +1,6 @@
 # 这里装需要的外部库，python源码库不需要
 pandas
 numpy
-scikit-learn
+scikit-learn==0.24.2
 joblib
 sklearn
