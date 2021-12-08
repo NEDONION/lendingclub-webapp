@@ -48,7 +48,7 @@ import time
 
 def app():
 
-    st.markdown("<h1 style='text-align: center; color: black;'>Loan Eligibility Assessment</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center;'>Loan Eligibility Assessment</h1>", unsafe_allow_html=True)
     # 手动换行
     st.markdown("  ")
     st.markdown("  ")
