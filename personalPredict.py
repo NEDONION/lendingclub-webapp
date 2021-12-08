@@ -164,7 +164,7 @@ def app():
     # inq_last_6mths
     inq_last_6mths = col4.number_input("Number of Inquiries by creditors in the last 6 months (0 - 30)", value=1, step=1, max_value=30, min_value=0)
     # delinq_2yrs
-    delinq_2yrs = col4.number_input("Number of times You had been 30+ days past due on a payment in the past 2 years (0 - 15)", value=0, step=1, max_value=15, min_value=0)
+    delinq_2yrs = col4.number_input("Number of times You had been 30+ days past due on a payment (0 - 15)", value=0, step=1, max_value=15, min_value=0)
     # pub_rec
     pub_rec = col4.number_input("Number of Derogatory Public Records (0 - 5)", value=1, step=1, max_value=5, min_value=0)
 
