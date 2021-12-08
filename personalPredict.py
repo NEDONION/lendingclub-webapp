@@ -48,14 +48,34 @@ import time
 
 def app():
 
-    st.markdown("<h1 style='text-align: center; color: black;'>Would you pay off the loan?</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center; color: black;'>Loan Eligibility Assessment</h1>", unsafe_allow_html=True)
+    # 手动换行
+    st.markdown("  ")
+    st.markdown("  ")
+    
+    header1, header_null, header2 = st.columns([4, 0.3, 5])
+    with header1:
+        bank = Image.open("img/bank.jpg")
+        st.image(bank)
+    
+    with header2:
+        st.markdown("<h3 style='color:#F63366;'><b>Introduction<b></h3>", unsafe_allow_html=True)
+        st.write(
+    """
+    文案1:
+      - 文案2
+      - 文案2
+    """
+        )
+    
     st.markdown(' --- ')
     
     @st.cache(allow_output_mutation=True)
     def openModel():
         model  = pickle.load(open('model/lc.model', 'rb'))
         return model
-
+    model = openModel()
+    
     @st.cache(allow_output_mutation=True)
     def openPipeline():
         pipeline = pickle.load(open('model/feature.pipeline', 'rb'))
@@ -67,88 +87,89 @@ def app():
     # header_pic = Image.open('header.jpg')
     # st.image(header_pic, use_column_width=True)
 
+    col1, col2 = st.columns(2)
+    with col1:
+        st.write(
+    """
+    #### **Enter Personal Details:**
+    """)   
+    
+    with col2:
+        st.write(
+    """
+    #### **Enter Loan Details:**
+    """)   
+    
+    st.markdown(" --- ")
+    
+    col3, col4= st.columns(2)
+    
+    with col3:
+        st.write(
+    """
+    #### **Enter Credit Report:**
+    """)   
+        
+    with col4:
+        st.write(
+    """
+    #### **Enter Past Records:**
+    """)   
+    
+    
+    yourname = col1.text_input("Your Name")
+
     def creditPolicy(credit_policy_choice):
-        if credit_policy_choice == "You can meets the credit underwriting criteria":
+        if credit_policy_choice == "Meet the credit policy":
             return 1
         else:
             return 0
 
     # credit_policy
-    credit_policy_option = ["You can meets the credit underwriting criteria", "You cannot meets the credit underwriting criteria"]
-    credit_policy_choice = st.selectbox("Which credit policy would you prefer?", options=credit_policy_option)
-    st.write('You selected:', credit_policy_choice)
-
+    credit_policy_option = ["Meet the credit policy", "Does not meet the credit policy"]
+    credit_policy_help = "If the customer meets the credit underwriting criteria of LendingClub.com"
+    credit_policy_choice = col1.selectbox("Credit Policy", options=credit_policy_option, help=credit_policy_help)
     credit_policy = creditPolicy(credit_policy_choice)
-    st.markdown(' --- ')
 
     # purpose
     purpose_list = ['debt_consolidation', 'credit_card', 'all_other',
         'home_improvement', 'small_business', 'major_purchase',
         'educational']
-
-    purpose = st.selectbox("What is your purpose of the loan?", options=purpose_list)
-    st.write('You selected:', purpose)
-
-    st.markdown(' --- ')
-
-    # int_rate
-    int_rate = st.number_input("What is your interest rate of the loan (proportion)?", value=0.005, step=0.001)
-    st.write('You selected:', int_rate)
-
-    st.markdown(' --- ')
-
-    # installment
-    installment = st.number_input("What is your monthly installments (10$ - 1000$)?", value=50, step=1, max_value=1000, min_value=10)
-    st.write('You selected:', installment)
-    st.markdown(' --- ')
+    purpose = col1.selectbox("Loan Purpose", options=purpose_list)
 
     # log annual income
-    annual_income = st.number_input("What is your annual income (1$ ~)?", value=50, step=1, min_value=1)
-    st.write('You selected:', annual_income)
+    annual_income = col1.number_input("Annual Income (1$ ~)", value=50, step=1, min_value=1)
     # 求自然底数
     log_annual_inc = round(math.log(annual_income), 5)
-    st.markdown(' --- ')
+
+
+    int_rate = col2.number_input("Interest Rate (0.05 - 0.25)?", value=0.05, step=0.01)
+    
+    installment_help = "The monthly installments ($) owed by the borrower if the loan is funded."
+    installment = col2.number_input("Monthly Installments (10$ - 1000$)", value=50, step=1, max_value=1000, min_value=10, help=installment_help)
+    
+    revol_bal = col2.number_input("Revolving Balance (0 - 120000)", value=1, step=1, max_value=120000, min_value=0)
+    revol_util = col2.number_input("Credit Utilization Ratio (0 - 120)", value=1, step=1, max_value=120, min_value=0)
+
+
 
     # dti 债务收入比
-    dti = st.number_input("What is your debt-to-income ratio (0 - 50)?", value=5, step=1, max_value=50, min_value=0)
-    st.write('You selected:', dti)
-    st.markdown(' --- ')
-
+    dti = col3.number_input("Debt to Income Ratio (0 - 50)", value=5, step=1, max_value=50, min_value=0)
     # fico 信用评级
-    fico = st.number_input("What is your FICO credit score (600 - 800)?", value=600, step=1, max_value=850, min_value=600)
-    st.write('You selected:', fico)
-    st.markdown(' --- ')
-
+    fico = col3.number_input("FICO Credit Score (600 - 850)", value=600, step=1, max_value=850, min_value=600)
     # days_with_cr_line 借款人拥有信用额度的天数
-    days_with_cr_line = st.number_input("What is the number of days you has had a credit line (100 - 18000)?", value=100, step=1, max_value=18000, min_value=100)
-    st.write('You selected:', days_with_cr_line)
-    st.markdown(' --- ')
+    days_with_cr_line = col3.number_input("Number of days You has had a credit line (100 - 18000)", value=100, step=1, max_value=18000, min_value=100)
 
-    # revol_bal Revolving Balance 。
-    revol_bal = st.number_input("What is your revolving balance (0 - 120000)?", value=1, step=1, max_value=120000, min_value=0)
-    st.write('You selected:', revol_bal)
-    st.markdown(' --- ')
-
-    # revol_util
-    revol_util = st.number_input("What is your credit utilization ratio (0 - 120)?", value=1, step=1, max_value=120, min_value=0)
-    st.write('You selected:', revol_util)
-    st.markdown(' --- ')
 
     # inq_last_6mths
-    inq_last_6mths = st.number_input("What is your number of inquiries by creditors in the last 6 months (0 - 30)?", value=1, step=1, max_value=30, min_value=0)
-    st.write('You selected:', inq_last_6mths)
-    st.markdown(' --- ')
-
+    inq_last_6mths = col4.number_input("Number of Inquiries by creditors in the last 6 months (0 - 30)", value=1, step=1, max_value=30, min_value=0)
     # delinq_2yrs
-    delinq_2yrs = st.number_input("What is the number of times you had been 30+ days past due on a payment in the past 2 years (0 - 15)?", value=0, step=1, max_value=15, min_value=0)
-    st.write('You selected:', delinq_2yrs)
-    st.markdown(' --- ')
-
+    delinq_2yrs = col4.number_input("Number of times You had been 30+ days past due on a payment in the past 2 years (0 - 15)", value=0, step=1, max_value=15, min_value=0)
     # pub_rec
-    pub_rec = st.number_input("What is your number of derogatory public records (0 - 5)?", value=1, step=1, max_value=5, min_value=0)
-    st.write('You selected:', pub_rec)
-    st.markdown(' --- ')
+    pub_rec = col4.number_input("Number of Derogatory Public Records (0 - 5)", value=1, step=1, max_value=5, min_value=0)
 
+    
+    st.markdown(" --- ")
     feature = {
             'credit_policy': credit_policy,
             'purpose': purpose, 
@@ -165,26 +186,26 @@ def app():
             'pub_rec': pub_rec}
 
     # 点击预测
-    if st.button("Click to predict Whether your Loan Will Go Bad"):
+    if st.button("Check Eligibility"):
 
         
         feature_df = pd.DataFrame(feature, index=[0])
-        st.dataframe(feature_df)
+        # st.dataframe(feature_df)
         
         X_test_features = pipeline.transform(feature_df)
         prediction = model.predict(X_test_features)
         
         with st.spinner('Processing...'):
-            time.sleep(2)
+            time.sleep(1)
         st.success('Done!')
         
         if prediction == 1:
             # st.image(survived_pic, use_column_width=True)
-            st.write("你老赖了")
+            st.warning(f"{yourname}你老赖了")
 
         else:
             # st.image(death_pic, use_column_width=True)
-            st.write("你能还清贷款")
+            st.success(f"Congratulations {yourname}! Based on the information you provided, You're eligible for the Loan.")
         
     
     

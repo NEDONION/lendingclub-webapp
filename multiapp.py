@@ -44,9 +44,22 @@ class MultiApp:
             "🎈 **NEW:** 这里是测试)"
         )
         st.sidebar.header('Go To')
+
         app = st.sidebar.radio(
             '',
             self.apps,
             format_func=lambda app: app['title'])
 
         app['function']()
+        
+        expander = st.sidebar.expander('About us')
+        expander.write(
+            """
+            xx Team @ Tulane University
+            - Yuchuan Han
+            - Jiaquan Zhang
+            - Yifan Xue
+            - Kechun Yang
+            - Jiacheng Hu
+            """
+                )
