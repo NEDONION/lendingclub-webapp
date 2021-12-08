@@ -1,9 +1,6 @@
 import streamlit as st
 import pandas as pd
 from joblib import dump,load
-from sklearn import metrics
-from sklearn.metrics import confusion_matrix,plot_confusion_matrix
-from sklearn.feature_extraction.text import CountVectorizer
 import pickle
 import time
 

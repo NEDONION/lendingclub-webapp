@@ -55,7 +55,7 @@ class MultiApp:
         expander = st.sidebar.expander('About us')
         expander.write(
             """
-            xx Team @ Tulane University
+            Applied Machine Learning Team 3 @ Tulane University
             - Yuchuan Han
             - Jiaquan Zhang
             - Yifan Xue
