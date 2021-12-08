@@ -65,6 +65,16 @@ def app():
         st.write("Let's take a look at the raw testing data")
         st.write(df.head(5))
         # df = df.iloc[0:100]
+        
+        # 判定数据集合法
+        if len(df.columns) > 13:
+            st.error("列数超过13列! ")
+            st.stop()
+        elif len(df.columns) < 13:
+            st.error("列数少于13列! ")
+            st.stop()
+        else:
+            st.success("列数符合标准")
 
         st.markdown(" --- ")
         if st.button("Predict My CSV"):
