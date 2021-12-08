@@ -99,10 +99,21 @@ def app():
             df['model_predict'] = model_pred
             df['nb_predict'] = nb_pred
             
+            @st.cache(allow_output_mutation=True)
+            def posAndNeg(pred):
+                fp = nfp = 0
+                for i in pred:
+                    if i == 0:
+                        fp += 1
+                    else:
+                        nfp += 1
+                return fp, nfp
             
             st.markdown("<h5 style='color:#F63366;'><b>KNN Model<b></h5>", unsafe_allow_html=True)
-            knn_fp = len(df[df['knn_predict'] == 0])
-            knn_nfp = len(df[df['knn_predict'] == 1])
+            
+            knn_fp, knn_nfp = posAndNeg(knn_pred)
+            # knn_fp = len(df[df['knn_predict'] == 0])
+            # knn_nfp = len(df[df['knn_predict'] == 1])
             with st.container():
                 col1, col2 = st.columns(2)
                 with col1:
@@ -114,8 +125,9 @@ def app():
             
             st.markdown("<h5 style='color:#F63366;'><b>Decision Tree Model<b></h5>", unsafe_allow_html=True)
             
-            dt_fp = len(df[df['dt_predict'] == 0])
-            dt_nfp = len(df[df['dt_predict'] == 1])
+            dt_fp, dt_nfp = posAndNeg(dt_pred)
+            # dt_fp = len(df[df['dt_predict'] == 0])
+            # dt_nfp = len(df[df['dt_predict'] == 1])
             with st.container():
                 col1, col2 = st.columns(2)
                 with col1:
@@ -125,23 +137,25 @@ def app():
                     
             st.markdown(" --- ")
             
-            st.markdown("<h5 style='color:#F63366;'><b>嘉全 Model<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>Logistic Regression Model<b></h5>", unsafe_allow_html=True)
             
-            jq_fp = len(df[df['model_predict'] == 0])
-            jq_nfp = len(df[df['model_predict'] == 1])
+            lr_fp, lr_nfp = posAndNeg(model_pred)
+            # jq_fp = len(df[df['model_predict'] == 0])
+            # jq_nfp = len(df[df['model_predict'] == 1])
             with st.container():
                 col1, col2 = st.columns(2)
                 with col1:
-                    st.metric(label="fully_paid", value=jq_fp)
+                    st.metric(label="fully_paid", value=lr_fp)
                 with col2:
-                    st.metric(label="not_fully_paid", value=jq_nfp)
+                    st.metric(label="not_fully_paid", value=lr_nfp)
             
             st.markdown(" --- ")
             
-            st.markdown("<h5 style='color:#F63366;'><b>NB Model<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>Naive Bayers Model<b></h5>", unsafe_allow_html=True)
             
-            nb_fp = len(df[df['nb_predict'] == 0])
-            nb_nfp = len(df[df['nb_predict'] == 1])
+            nb_fp, nb_nfp = posAndNeg(nb_pred)
+            # nb_fp = len(df[df['nb_predict'] == 0])
+            # nb_nfp = len(df[df['nb_predict'] == 1])
             with st.container():
                 col1, col2 = st.columns(2)
                 with col1:
