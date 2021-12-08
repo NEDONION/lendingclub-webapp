@@ -43,10 +43,11 @@ class MultiApp:
             st.info(
             "🎈 **NEW:** 这里是测试)"
         )
-        st.sidebar.header('Go To')
+        
+        st.sidebar.title('Navigation')
 
         app = st.sidebar.radio(
-            '',
+            'Go to',
             self.apps,
             format_func=lambda app: app['title'])
 
