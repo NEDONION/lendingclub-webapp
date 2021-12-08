@@ -73,8 +73,10 @@ def app():
                 time.sleep(1)
             st.success('Done!')
             
-            if df.shape(1) > 13:
-                return "列数超过13列了" 
+            # 列数超过13列了
+            if len(df.columns) > 13:
+                st.warning("列数超过13列了")
+                st.stop()
             
             X = df
 
