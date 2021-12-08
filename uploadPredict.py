@@ -74,7 +74,7 @@ def app():
             st.success('Done!')
             X = df
 
-            lc_X_tr = pipeline.fit_transform(X)
+            lc_X_tr = pipeline.transform(X)
 
             # if choose_model == 'XGBOOST':
             #     model = xgb
