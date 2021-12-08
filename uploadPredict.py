@@ -72,6 +72,10 @@ def app():
             with st.spinner('Processing...'):
                 time.sleep(1)
             st.success('Done!')
+            
+            if df.shape(1) > 13:
+                return "列数超过13列了" 
+            
             X = df
 
             lc_X_tr = pipeline.transform(X)
