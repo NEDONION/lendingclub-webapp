@@ -52,8 +52,8 @@ class MultiApp:
 
         app['function']()
         
-        expander = st.sidebar.expander('About us')
-        expander.write(
+        st.sidebar.title('About')
+        st.sidebar.info(
             """
             Applied Machine Learning Team 3 @ Tulane University
             - Yuchuan Han
