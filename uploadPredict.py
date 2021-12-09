@@ -9,7 +9,7 @@ from streamlit_pandas_profiling import st_profile_report
 
 def app():
 
-    st.header('标题1')
+    st.header('Upload CSV to More Models')
     st.write('''
              At **Borrow Faster**, we are dedicated to offering the most effective evaluation model to help business, applicants estimate their eligibility for loan applications. We make full use of four supervised machine learning techniques(**Logistic Regression**, **Naive Bayers**, **K-Nearest Neighbors**, and **Decision Tree**) to learn how to best make predictions.
              ''')

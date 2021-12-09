@@ -25,5 +25,5 @@ menu_items={
 app = MultiApp()
 app.add_app("Home Page", homepage.app)
 app.add_app("Loan Eligibility Assessment", personalPredict.app)
-app.add_app("Upload CSV to Predict", uploadPredict.app)
+app.add_app("Upload CSV to More Models", uploadPredict.app)
 app.run()
