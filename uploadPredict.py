@@ -9,8 +9,10 @@ from streamlit_pandas_profiling import st_profile_report
 
 def app():
 
-    st.header('Lending Club: Predict Whether a Loan Will Go Bad')
-    st.write('Upload LendingClub Clients Infomation to Make Predictions' )
+    st.header('标题1')
+    st.write('''
+             At **Borrow Faster**, we are dedicated to offering the most effective evaluation model to help business, applicants estimate their eligibility for loan applications. We make full use of four supervised machine learning techniques(Logistic Regression, Naive Bayers, K-Nearest Neighbors, and Decision Tree) to learn how to best make predictions.
+             ''')
 
   
     @st.cache(allow_output_mutation=True)

@@ -63,9 +63,9 @@ def app():
         st.markdown("<h3 style='color:#F63366;'><b>Introduction<b></h3>", unsafe_allow_html=True)
         st.write(
     """
-    文案1:
-      - 文案2
-      - 文案2
+    At **Borrow Faster**, we made our minds to be unique in approaching this typical supervised machine learning problem, to check your loan eligibility.
+      - Enter your personal information.
+      - Your loan eligibility result will be generated below.
     """
         )
     

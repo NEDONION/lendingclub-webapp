@@ -40,9 +40,14 @@ class MultiApp:
 
     def run(self):
         with st.sidebar:
-            st.info(
-            "🎈 **NEW:** 这里是测试)"
-        )
+        #     st.info(
+        #     "🎈 **NEW:** 这里是测试)"
+        # )
+            # github-icon
+            st.write(
+            '''[![Star](https://img.shields.io/github/stars/NEDONION/lendingclub-webapp.svg?logo=github&style=social)](https://github.com/NEDONION/lendingclub-webapp)
+                [![MAIL Badge](https://img.shields.io/badge/-nedjiachenghu@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:nedjiachenghu@gmail.com)](mailto:nedjiachenghu@gmail.com)
+            ''')
         st.sidebar.title('Navigation')
         
         app = st.sidebar.radio(
