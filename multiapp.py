@@ -43,9 +43,8 @@ class MultiApp:
             st.info(
             "🎈 **NEW:** 这里是测试)"
         )
-        
         st.sidebar.title('Navigation')
-
+        
         app = st.sidebar.radio(
             'Go to',
             self.apps,
@@ -62,5 +61,6 @@ class MultiApp:
             - Yifan Xue
             - Kechun Yang
             - Jiacheng Hu
+            
             """
                 )

@@ -3,54 +3,28 @@ import pandas as pd
 from joblib import dump,load
 import pickle
 import time
+from pandas_profiling import ProfileReport
+from streamlit_pandas_profiling import st_profile_report
+
 
 def app():
 
     st.header('Lending Club: Predict Whether a Loan Will Go Bad')
     st.write('Upload LendingClub Clients Infomation to Make Predictions' )
 
+  
     @st.cache(allow_output_mutation=True)
-    def openSvc():
-        svc = pickle.load(open('model/lc_svc.model', 'rb'))
-        return svc
-    
-    @st.cache(allow_output_mutation=True)
-    def openPipeline():
-        pipeline = pickle.load(open('model/feature.pipeline', 'rb'))
-        return pipeline
-
-    @st.cache(allow_output_mutation=True)
-    def openDt():
-        dt = pickle.load(open('model/lc_dt.model', 'rb'))
-        return dt
-
-    @st.cache(allow_output_mutation=True)
-    def openXgb():
-        xgb = pickle.load(open('model/lc_xgb.model', 'rb'))
-        return xgb
-
-    @st.cache(allow_output_mutation=True)
-    def openKnn():
-        knn = pickle.load(open('model/lc_knn.model', 'rb'))
-        return knn
-    
-    @st.cache(allow_output_mutation=True)
-    def openModel():
-        model  = pickle.load(open('model/lc.model', 'rb'))
+    def openModel(path):
+        model  = pickle.load(open(path, 'rb'))
         return model
     
-    @st.cache(allow_output_mutation=True)
-    def openNb():
-        nb  = pickle.load(open('model/lc_nb.model', 'rb'))
-        return nb
-    
-    nb = openNb()
-    model = openModel()
-    knn = openKnn()
-    svc = openSvc()
-    dt = openDt()
+    nb = openModel('model/lc_nb.model')
+    lr = openModel('model/lc_lr.model')
+    knn = openModel('model/lc_knn.model')
+    svc = openModel('model/lc_svc.model')
+    dt = openModel('model/lc_dt.model')
     # xgb = openXgb()
-    pipeline = openPipeline()
+    pipeline = openModel('model/feature.pipeline')
     
     # choose_model=st.selectbox(
 	# 'Choose A Prediction Model',
@@ -75,7 +49,23 @@ def app():
             st.stop()
         else:
             st.success("列数符合标准")
-
+        
+        @st.cache(allow_output_mutation=True)
+        def showReport(df):
+            pr = df.profile_report()
+            return pr
+        
+        with st.expander("REPORT", expanded=True):
+            my_bar = st.progress(0)
+            pr = showReport(df)
+            st_profile_report(pr)
+            
+            for percent_complete in range(100):
+                time.sleep(0.02)
+                my_bar.progress(percent_complete + 1)
+                
+            my_bar.empty()
+        
         st.markdown(" --- ")
         if st.button("Predict My CSV"):
             
@@ -101,12 +91,12 @@ def app():
 
             knn_pred = knn.predict(lc_X_tr)
             dt_pred = dt.predict(lc_X_tr)
-            model_pred = model.predict(lc_X_tr)
+            lr_pred = lr.predict(lc_X_tr)
             nb_pred = nb.predict(lc_X_tr)
             
             df['knn_predict'] = knn_pred
             df['dt_predict'] = dt_pred
-            df['model_predict'] = model_pred
+            df['lr_predict'] = lr_pred
             df['nb_predict'] = nb_pred
             
             @st.cache(allow_output_mutation=True)
@@ -149,7 +139,7 @@ def app():
             
             st.markdown("<h5 style='color:#F63366;'><b>Logistic Regression Model<b></h5>", unsafe_allow_html=True)
             
-            lr_fp, lr_nfp = posAndNeg(model_pred)
+            lr_fp, lr_nfp = posAndNeg(lr_pred)
             # jq_fp = len(df[df['model_predict'] == 0])
             # jq_nfp = len(df[df['model_predict'] == 1])
             with st.container():

@@ -4,3 +4,5 @@ numpy
 scikit-learn==0.24.2
 joblib
 sklearn
+pandas_profiling
+streamlit_pandas_profiling

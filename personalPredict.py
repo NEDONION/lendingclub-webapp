@@ -46,6 +46,7 @@ import math
 import pandas as pd
 import time
 
+
 def app():
 
     st.markdown("<h1 style='text-align: center;'>Loan Eligibility Assessment</h1>", unsafe_allow_html=True)
