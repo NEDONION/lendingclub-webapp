@@ -44,13 +44,13 @@ def app():
         
         # 判定数据集合法
         if len(df.columns) > 13:
-            st.error("列数超过13列! ")
+            st.error("More than 13 columns")
             st.stop()
         elif len(df.columns) < 13:
-            st.error("列数少于13列! ")
+            st.error("Less than 13 columns")
             st.stop()
         else:
-            st.success("列数符合标准")
+            st.success("Correct number of columns")
         
         @st.cache(allow_output_mutation=True)
         def showReport(df):
@@ -74,11 +74,6 @@ def app():
             with st.spinner('Processing...'):
                 time.sleep(1)
             st.success('Done!')
-            
-            # 列数超过13列了
-            if len(df.columns) > 13:
-                st.warning("列数超过13列了")
-                st.stop()
             
             X = df
 

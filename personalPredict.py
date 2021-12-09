@@ -133,10 +133,25 @@ def app():
     credit_policy = creditPolicy(credit_policy_choice)
 
     # purpose
-    purpose_list = ['debt_consolidation', 'credit_card', 'all_other',
-        'home_improvement', 'small_business', 'major_purchase',
-        'educational']
-    purpose = col1.selectbox("Loan Purpose", options=purpose_list)
+    def returnPurpose(choice):
+        if choice == 'Debt Consolidation':
+            return 'debt_consolidation'
+        elif choice == 'Credit Card':
+            return 'credit_card'
+        elif choice == "Others":
+            return 'all_other'
+        elif choice == 'Home Improvement':
+            return 'home_improvement'
+        elif choice == 'Small Business':
+            return 'small_business'
+        elif choice == 'Major Purchase':
+            return 'major_purchase'
+        elif choice == 'Educational':
+            return 'educational'
+    
+    purpose_list = ['Debt Consolidation', 'Credit Card', "Others", 'Home Improvement', 'Small Business', 'Major Purchase', 'Educational']
+    purpose_choice = col1.selectbox("Loan Purpose", options=purpose_list)
+    purpose = returnPurpose(purpose_choice)
 
     # log annual income
     annual_income = col1.number_input("Annual Income (1$ ~)", value=50, step=1, min_value=1)
@@ -202,11 +217,11 @@ def app():
         
         if prediction == 1:
             # st.image(survived_pic, use_column_width=True)
-            st.warning(f"{yourname}你老赖了")
+            st.warning(f"Sorry {yourname}! You don't meet the loan requirements.")
 
         else:
             # st.image(death_pic, use_column_width=True)
-            st.success(f"Congratulations {yourname}! Based on the information you provided, You're eligible for the Loan.")
+            st.success(f"Congratulations {yourname}! Based on the information you provided, You're eligible for the loan.")
         
     
     
