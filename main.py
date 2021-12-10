@@ -13,7 +13,7 @@ from PIL import Image
 # ICON = Image.open("img/icon2.png")
 
 st.set_page_config(
-page_title="Welcome to LendingClub!",
+page_title="Welcome to Borrow Faster!",
 page_icon= ":dog:",
 layout="wide",
 initial_sidebar_state="expanded",
