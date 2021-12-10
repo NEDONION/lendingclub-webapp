@@ -14,7 +14,7 @@ from PIL import Image
 
 st.set_page_config(
 page_title="Welcome to Borrow Faster!",
-page_icon= ":dog:",
+page_icon= ":cat:",
 layout="wide",
 initial_sidebar_state="expanded",
 menu_items={
