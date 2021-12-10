@@ -106,7 +106,7 @@ def app():
                         nfp += 1
                 return fp, nfp
             
-            st.markdown("<h5 style='color:#F63366;'><b>KNN Model<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>K-Nearest Neighbors Model<b></h5>", unsafe_allow_html=True)
             
             knn_fp, knn_nfp = posAndNeg(knn_pred)
             # knn_fp = len(df[df['knn_predict'] == 0])
