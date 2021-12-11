@@ -14,6 +14,10 @@ def app():
     st.write('''
              At **Borrow Faster**, we are dedicated to offering the most effective evaluation model to help business, applicants estimate their eligibility for loan applications. We make full use of four supervised machine learning techniques(**Logistic Regression**, **Naive Bayers**, **K-Nearest Neighbors**, and **Decision Tree**) to learn how to best make predictions.
              ''')
+    st.markdown("<h3 style='color:#F63366;'><b>Model and Pipeline<b></h3>", unsafe_allow_html=True)
+    st.write('''
+             文案
+              ''')
 
   
     @st.cache(allow_output_mutation=True)
