@@ -22,6 +22,7 @@ def app():
              - Enter your account information (region time, dynamoDB table name, etc).
              - Enter your predict output column name.
              - Enter your AWS Token.
+             - Your predicted result in the DynamoDB table will be generated below.
              
              ''')
 
