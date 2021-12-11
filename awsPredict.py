@@ -112,6 +112,9 @@ def app():
     
     if st.button('Click to connect'):
         st.markdown(" --- ")
+        if not (awstoken and predict_column and db_table and s3_bucket and region_name):
+            st.error("Missing Input Information")
+            st.stop()
         
         def readKeys(text):
             lines = text.split("\n")
