@@ -19,9 +19,9 @@ def app():
     st.write('''
              We provide an unsafe network transmission method for users to enter AWS Token to connect the AWS for demo.
              
-             - Enter your account information (region time, dynamoDB table name, etc.)
-             - Enter your predict output column name
-             - Enter your AWS Token
+             - Enter your account information (region time, dynamoDB table name, etc).
+             - Enter your predict output column name.
+             - Enter your AWS Token.
              
              ''')
 
