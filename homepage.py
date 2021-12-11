@@ -33,6 +33,7 @@ def app():
     st.markdown("<h3 style='text-align: left; color:#F63366; font-size:24px;'><b>About the data set<b></h3>", unsafe_allow_html=True)
     st.write('''
              Lending Club is a peer-to-peer lending company that matches borrowers with investors through an online platform. It services people that need personal loans between $1,000 and $40,000. Borrowers receive the full amount of the issued loan minus the origination fee, which is paid to the company. Investors purchase notes backed by the personal loans and pay Lending Club a service fee. The company shares data about all loans issued through its platform during certain time periods.
+             **We choose the Lending Club data set with 13 columns:**
              ''')
     st.write('''
              - **credit_policy**: 1 if the customer meets the credit underwriting criteria of LendingClub.com, and 0 otherwise.
