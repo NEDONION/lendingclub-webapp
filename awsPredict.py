@@ -26,11 +26,11 @@ def app():
     digraph {
         { 
             node [shape=box style=filled]
-            "S3 Bucket Test Data"[fillcolor=darkslategray2]
+            "S3 Bucket Test Data"[fillcolor=lightsalmon2]
             "LambdaFunc1 
         Upload Test Data to Dynamodb Table"[fillcolor=cornsilk2]
             "S3 Bucket
-        FeaturePipeline+Predict Model"[fillcolor=darkslategray2]
+        FeaturePipeline+Predict Model"[fillcolor=lightsalmon2]
             "Dynamodb Table
         LendingClub"[fillcolor=aquamarine2]
             "LambdaFunc2
