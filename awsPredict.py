@@ -16,7 +16,7 @@ def app():
     st.markdown("<h1 style='text-align: center;'>Connect to AWS Service</h1>", unsafe_allow_html=True)
     # st.header('Connect to AWS Service')
     st.markdown("<h3 style='color:#F63366;'><b>Introduction<b></h3>", unsafe_allow_html=True)
-    st.write('文案' )
+    st.write('We provide an unsafe network transmission method for users to enter AWS Token to connect the AWS for demo.' )
 
     
     st.markdown("<h3 style='color:#F63366;'><b>Workflow<b></h3>", unsafe_allow_html=True)
