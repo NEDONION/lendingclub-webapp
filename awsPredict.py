@@ -16,7 +16,14 @@ def app():
     st.markdown("<h1 style='text-align: center;'>Connect to AWS Service</h1>", unsafe_allow_html=True)
     # st.header('Connect to AWS Service')
     st.markdown("<h3 style='color:#F63366;'><b>Introduction<b></h3>", unsafe_allow_html=True)
-    st.write('We provide an unsafe network transmission method for users to enter AWS Token to connect the AWS for demo.' )
+    st.write('''
+             We provide an unsafe network transmission method for users to enter AWS Token to connect the AWS for demo.
+             
+             - Enter your account information (region time, dynamoDB table name, etc.)
+             - Enter your predict output column name
+             - Enter your AWS Token
+             
+             ''')
 
     
     st.markdown("<h3 style='color:#F63366;'><b>Workflow<b></h3>", unsafe_allow_html=True)
