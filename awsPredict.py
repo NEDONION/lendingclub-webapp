@@ -112,6 +112,8 @@ def app():
     
     if st.button('Click to connect'):
         st.markdown(" --- ")
+        st.markdown("<h3 style='color:#F63366;'><b>Predicted Result<b></h3>", unsafe_allow_html=True)
+        
         if not (awstoken and predict_column and db_table and s3_bucket and region_name):
             st.error("Missing Input Information")
             st.stop()
