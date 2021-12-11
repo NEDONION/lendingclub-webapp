@@ -13,7 +13,8 @@ import graphviz as graphviz
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 def app():
-    st.header('Connect to AWS Service')
+    st.markdown("<h1 style='text-align: center;'>Connect to AWS Service</h1>", unsafe_allow_html=True)
+    # st.header('Connect to AWS Service')
     st.markdown("<h3 style='color:#F63366;'><b>Introduction<b></h3>", unsafe_allow_html=True)
     st.write('文案' )
 
