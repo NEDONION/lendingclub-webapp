@@ -4,7 +4,6 @@ from joblib import dump,load
 from sklearn import metrics
 from sklearn.metrics import confusion_matrix,plot_confusion_matrix
 from sklearn.feature_extraction.text import CountVectorizer
-from io import BytesIO
 import boto3
 import json
 import matplotlib.pyplot as plt
