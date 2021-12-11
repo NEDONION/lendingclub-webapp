@@ -3,6 +3,7 @@ import streamlit as st
 import personalPredict
 import homepage
 import uploadPredict
+import awsPredict
 from multiapp import MultiApp
 from PIL import Image
 
@@ -26,4 +27,5 @@ app = MultiApp()
 app.add_app("Home Page", homepage.app)
 app.add_app("Loan Eligibility Assessment", personalPredict.app)
 app.add_app("Upload CSV to More Models", uploadPredict.app)
+app.add_app("Connect to AWS Service", awsPredict.app)
 app.run()
