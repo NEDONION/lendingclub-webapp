@@ -78,7 +78,6 @@ def app():
     if region_name == 'others':
         st.error("Wrong Region Time")
         
-    st.markdown(" --- ")
     
     s3_bucket = st.text_input('S3 Bucket Name')
 
@@ -87,14 +86,12 @@ def app():
     else:
         st.write('You selected:', s3_bucket)
 
-    st.markdown(" --- ")
     db_table = st.text_input('DynamoDB Table Name')
     if not db_table:
         st.error("Missing DynamoDB Table Name")
     else:
         st.write('You selected:', db_table)
     
-    st.markdown(" --- ")
     predict_column = st.text_input('Predict Output Column Name')
     if not predict_column:
         st.error("Missing Predict Output Column Name")
