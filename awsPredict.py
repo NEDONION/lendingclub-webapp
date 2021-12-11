@@ -107,6 +107,9 @@ def app():
 }
     
     awstoken = st.text_area('Enter AWS Token: ')
+    if not awstoken:
+        st.error("Missing AWS Token")
+    
     if st.button('Click to connect'):
         st.markdown(" --- ")
         
