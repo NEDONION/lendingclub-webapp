@@ -7,3 +7,5 @@ sklearn
 pandas_profiling
 streamlit_pandas_profiling
 graphviz
+boto3
+matplotlib
