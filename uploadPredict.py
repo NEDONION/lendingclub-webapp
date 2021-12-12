@@ -20,6 +20,13 @@ def app():
              - Numerical Columns: replace ‘NA’ with ‘Median’; Use StandardScaler to standardize data.
              - Categorical Columns: use OneHotEncoder to process.
               ''')
+    
+    st.markdown("<h3 style='color:#F63366;'><b>Model<b></h3>", unsafe_allow_html=True)
+    st.write(
+        '''
+        We exploited four popular supervised learning techniques to make predictions. It is discovered that the Decision Tree model performs best with 77% test accuracy. We focused on test accuracy scores and tune hyper-parameters with the Grid Search CV technique to improve model performance. By observing the tuning results, we can conclude that KNN and Decision Tree models perform significantly better on test accuracy after hyper-para tuning.
+        '''
+    )
 
   
     @st.cache(allow_output_mutation=True)
