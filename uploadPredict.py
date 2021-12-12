@@ -17,8 +17,8 @@ def app():
     st.markdown("<h3 style='color:#F63366;'><b>Pipeline<b></h3>", unsafe_allow_html=True)
 
     st.write('''
-             - Numerical Columns: replace ‘NA’ with ‘Median’; Use StandardScaler to standardize data.
-             - Categorical Columns: use OneHotEncoder to process.
+             - **Numerical Columns**: replace ‘NA’ with ‘Median’; Use StandardScaler to standardize data.
+             - **Categorical Columns**: use OneHotEncoder to process.
               ''')
     
     st.markdown("<h3 style='color:#F63366;'><b>Model<b></h3>", unsafe_allow_html=True)
