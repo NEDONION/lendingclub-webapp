@@ -27,7 +27,8 @@ def app():
         We exploited four popular supervised learning techniques to make predictions. It is discovered that the Decision Tree model performs best with 77% test accuracy. We focused on test accuracy scores and tune hyper-parameters with the Grid Search CV technique to improve model performance. By observing the tuning results, we can conclude that KNN and Decision Tree models perform significantly better on test accuracy after hyper-para tuning.
         '''
     )
-
+    
+    st.markdown(" --- ")
   
     @st.cache(allow_output_mutation=True)
     def openModel(path):
