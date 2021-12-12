@@ -121,7 +121,7 @@ def app():
                         nfp += 1
                 return fp, nfp
             
-            st.markdown("<h5 style='color:#F63366;'><b>K-Nearest Neighbors Model (Accuracy: 0.658)<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>K-Nearest Neighbors Model (Accuracy: 66%)<b></h5>", unsafe_allow_html=True)
             
             knn_fp, knn_nfp = posAndNeg(knn_pred)
             # knn_fp = len(df[df['knn_predict'] == 0])
@@ -135,7 +135,7 @@ def app():
             
             st.markdown(" --- ")
             
-            st.markdown("<h5 style='color:#F63366;'><b>Decision Tree Model (Accuracy: 0.777)<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>Decision Tree Model (Accuracy: 78%)<b></h5>", unsafe_allow_html=True)
             
             dt_fp, dt_nfp = posAndNeg(dt_pred)
             # dt_fp = len(df[df['dt_predict'] == 0])
@@ -149,7 +149,7 @@ def app():
                     
             st.markdown(" --- ")
             
-            st.markdown("<h5 style='color:#F63366;'><b>Logistic Regression Model (Accuracy: 0.590)<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>Logistic Regression Model (Accuracy: 59%)<b></h5>", unsafe_allow_html=True)
             
             lr_fp, lr_nfp = posAndNeg(lr_pred)
             # jq_fp = len(df[df['model_predict'] == 0])
@@ -163,7 +163,7 @@ def app():
             
             st.markdown(" --- ")
             
-            st.markdown("<h5 style='color:#F63366;'><b>Naive Bayers Model (Accuracy: 0.702)<b></h5>", unsafe_allow_html=True)
+            st.markdown("<h5 style='color:#F63366;'><b>Naive Bayers Model (Accuracy: 70%)<b></h5>", unsafe_allow_html=True)
             
             nb_fp, nb_nfp = posAndNeg(nb_pred)
             # nb_fp = len(df[df['nb_predict'] == 0])
