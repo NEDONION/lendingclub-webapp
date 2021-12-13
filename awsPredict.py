@@ -240,34 +240,39 @@ def app():
             
         df_3=df_2[df_2['not_fully_paid']=='1']
 
+        col8, col9 = st.columns(2)
+        with col8:
         #Strip Plot of dti and credit policy
-        st.header('Strip Plot of Dti & Credit_Policy by Predicted Defaulted')
-        fig1 = plt.figure(figsize=(12,6))
-        sns.stripplot(x='credit_policy', y="dti", data=df_3,palette="muted")
-        st.pyplot(fig1)
+            st.header('Strip Plot of Dti & Credit_Policy by Predicted Defaulted')
+            fig1 = plt.figure(figsize=(12,6))
+            sns.stripplot(x='credit_policy', y="dti", data=df_3,palette="muted")
+            st.pyplot(fig1)
 
-        #strip Plot of Installment and credit policy
-        st.header('Strip Plot of Installment & Credit Policy by Predicted Defaulted')
-        fig1_1 = plt.figure(figsize=(12,6))
-        sns.stripplot(x='credit_policy', y="installment",data=df_3,palette="muted")
-        st.pyplot(fig1_1)
+        with col9:
+            #strip Plot of Installment and credit policy
+            st.header('Strip Plot of Installment & Credit Policy by Predicted Defaulted')
+            fig1_1 = plt.figure(figsize=(12,6))
+            sns.stripplot(x='credit_policy', y="installment",data=df_3,palette="muted")
+            st.pyplot(fig1_1)
 
+        col10, col11, col12 = st.columns(3)
+        with col10:
+            #Violin Plot analysis
+            st.header('Violin Plot of Fico Score & Purpose by Predicted Loan Payment')
+            fig2 = plt.figure(figsize=(36, 18))
+            sns.violinplot(x='purpose', y="fico", hue='not_fully_paid',data=df_2,palette="muted",split=True,inner="quartile")
+            st.pyplot(fig2)
 
-        #Violin Plot analysis
-        st.header('Violin Plot of Fico Score & Purpose by Predicted Loan Payment')
-        fig2 = plt.figure(figsize=(36, 18))
-        sns.violinplot(x='purpose', y="fico", hue='not_fully_paid',data=df_2,palette="muted",split=True,inner="quartile")
-        st.pyplot(fig2)
+        with col11:
+            #log income
+            st.header('Violin Plot of Log Annual Income & Purpose by Predicted Loan Payment')
+            fig3 = plt.figure(figsize=(36, 18))
+            sns.violinplot(x='purpose', y="log_annual_inc", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
+            st.pyplot(fig3)
 
-        #log income
-        st.header('Violin Plot of Log Annual Income & Purpose by Predicted Loan Payment')
-        fig3 = plt.figure(figsize=(36, 18))
-        sns.violinplot(x='purpose', y="log_annual_inc", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
-        st.pyplot(fig3)
-
-
-        #pub_rec
-        st.header('Violin Plot of Derogatory Public Records  & Purpose by Predicted Loan Payment')
-        fig4 = plt.figure(figsize=(36, 18))
-        sns.violinplot(x='purpose', y="pub_rec", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
-        st.pyplot(fig4)
+        with col12:
+            #pub_rec
+            st.header('Violin Plot of Derogatory Public Records  & Purpose by Predicted Loan Payment')
+            fig4 = plt.figure(figsize=(36, 18))
+            sns.violinplot(x='purpose', y="pub_rec", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
+            st.pyplot(fig4)
