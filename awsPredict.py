@@ -8,6 +8,7 @@ import boto3
 import json
 import matplotlib.pyplot as plt
 import graphviz as graphviz
+import seaborn as sns
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -236,3 +237,37 @@ def app():
             df_4.hist()
             plt.show()
             st.pyplot()
+            
+        df_3=df_2[df_2['not_fully_paid']=='1']
+
+        #Strip Plot of dti and credit policy
+        st.header('Strip Plot of Dti & Credit_Policy by Predicted Defaulted')
+        fig1 = plt.figure(figsize=(12,6))
+        sns.stripplot(x='credit_policy', y="dti", data=df_3,palette="muted")
+        st.pyplot(fig1)
+
+        #strip Plot of Installment and credit policy
+        st.header('Strip Plot of Installment & Credit Policy by Predicted Defaulted')
+        fig1_1 = plt.figure(figsize=(12,6))
+        sns.stripplot(x='credit_policy', y="installment",data=df_3,palette="muted")
+        st.pyplot(fig1_1)
+
+
+        #Violin Plot analysis
+        st.header('Violin Plot of Fico Score & Purpose by Predicted Loan Payment')
+        fig2 = plt.figure(figsize=(36, 18))
+        sns.violinplot(x='purpose', y="fico", hue='not_fully_paid',data=df_2,palette="muted",split=True,inner="quartile")
+        st.pyplot(fig2)
+
+        #log income
+        st.header('Violin Plot of Log Annual Income & Purpose by Predicted Loan Payment')
+        fig3 = plt.figure(figsize=(36, 18))
+        sns.violinplot(x='purpose', y="log_annual_inc", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
+        st.pyplot(fig3)
+
+
+        #pub_rec
+        st.header('Violin Plot of Derogatory Public Records  & Purpose by Predicted Loan Payment')
+        fig4 = plt.figure(figsize=(36, 18))
+        sns.violinplot(x='purpose', y="pub_rec", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
+        st.pyplot(fig4)
