@@ -255,24 +255,20 @@ def app():
             sns.stripplot(x='credit_policy', y="installment",data=df_3,palette="muted")
             st.pyplot(fig1_1)
 
-        col10, col11, col12 = st.columns(3)
-        with col10:
-            #Violin Plot analysis
-            st.write('Fico Score & Purpose')
-            fig2 = plt.figure(figsize=(36, 18))
-            sns.violinplot(x='purpose', y="fico", hue='not_fully_paid',data=df_2,palette="muted",split=True,inner="quartile")
-            st.pyplot(fig2)
+        #Violin Plot analysis
+        st.write('Fico Score & Purpose')
+        fig2 = plt.figure(figsize=(36, 18))
+        sns.violinplot(x='purpose', y="fico", hue='not_fully_paid',data=df_2,palette="muted",split=True,inner="quartile")
+        st.pyplot(fig2)
 
-        with col11:
-            #log income
-            st.write('Log Annual Income & Purpose')
-            fig3 = plt.figure(figsize=(36, 18))
-            sns.violinplot(x='purpose', y="log_annual_inc", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
-            st.pyplot(fig3)
+        #log income
+        st.write('Log Annual Income & Purpose')
+        fig3 = plt.figure(figsize=(36, 18))
+        sns.violinplot(x='purpose', y="log_annual_inc", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
+        st.pyplot(fig3)
 
-        with col12:
-            #pub_rec
-            st.write('Derogatory Public Records & Purpose')
-            fig4 = plt.figure(figsize=(36, 18))
-            sns.violinplot(x='purpose', y="pub_rec", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
-            st.pyplot(fig4)
+        #pub_rec
+        st.write('Derogatory Public Records & Purpose')
+        fig4 = plt.figure(figsize=(36, 18))
+        sns.violinplot(x='purpose', y="pub_rec", hue='not_fully_paid',data=df_2,palette="pastel",split=True,inner="quartile")
+        st.pyplot(fig4)
