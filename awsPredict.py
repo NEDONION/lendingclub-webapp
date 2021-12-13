@@ -223,20 +223,20 @@ def app():
         df_2[cols] = df_2[cols].apply(pd.to_numeric)
 
 
-        col6, col7 = st.columns(2)
-        with col6:
-            st.write('Dti and Log_annual_inc Histogram')
-            df_3 = pd.DataFrame(df_2, columns =['dti','log_annual_inc'])
-            df_3.hist()
-            plt.show()
-            st.pyplot()
+        # col6, col7 = st.columns(2)
+        # with col6:
+        #     st.write('Dti and Log_annual_inc Histogram')
+        #     df_3 = pd.DataFrame(df_2, columns =['dti','log_annual_inc'])
+        #     df_3.hist()
+        #     plt.show()
+        #     st.pyplot()
 
-        with col7:
-            st.write('Fico score and Int_rate Histogram')
-            df_4 = pd.DataFrame(df_2, columns =['fico','int_rate'])
-            df_4.hist()
-            plt.show()
-            st.pyplot()
+        # with col7:
+        #     st.write('Fico score and Int_rate Histogram')
+        #     df_4 = pd.DataFrame(df_2, columns =['fico','int_rate'])
+        #     df_4.hist()
+        #     plt.show()
+        #     st.pyplot()
             
         df_3=df_2[df_2['not_fully_paid']=='1']
 
