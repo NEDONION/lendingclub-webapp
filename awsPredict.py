@@ -218,7 +218,7 @@ def app():
 
 
         #histogram['dti','log_annual_inc','revol_bal','fico','int_rate']
-        cols = ['dti','log_annual_inc','revol_bal','fico','int_rate']
+        cols = ['dti','log_annual_inc','revol_bal','fico','int_rate','delinq_2yrs','pub_rec','installment']
         # data[cols] = data[cols].apply(pd.to_numeric, errors='coerce', axis=1)
         df_2[cols] = df_2[cols].apply(pd.to_numeric)
 
